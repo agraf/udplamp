@@ -3,6 +3,7 @@
 from PIL import Image
 from udplamp import UdpLamp
 from pictures import Pictures
+import time
 
 # "lamp" ist das Objekt um die Lampe anzusteuern
 lamp = UdpLamp('192.168.107.10')
@@ -18,8 +19,23 @@ image = Image.new(mode = "RGB",
 		  size = (250, 1),
 		  color = (0, 0 ,0))
 
-# Wir fügen einen Stern an Pixel 5 hinzu.
-image.paste(pics.star, (5, 0), pics.star)
+# Wir wollen einen Stern auf das Bild packen. Der Ort vom Stern ist
+# allerdings flexibel. In dieser Variable merken wir uns, wo der Stern
+# gerade ist.
+x = 0
 
-# Jetzt übernehmen wir das neue Bild auf dem LED-Streifen.
-lamp.set(image)
+while True:
+
+	# Wir fügen einen Stern an Pixel x hinzu.
+	image.paste(pics.star, (x, 0), pics.star)
+
+	# Jede Runde geht der Stern um einen Pixel weiter
+	x = x + 1
+	if x > 250:
+		x = 0
+
+	# Jetzt schicken wir das neue Bild an den LED-Streifen
+	lamp.set(image)
+
+	# und warten eine zehntel Sekunde bis zum nächsten Bild.
+	time.sleep(0.1)
