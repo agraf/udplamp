@@ -9,5 +9,5 @@ class UdpLamp:
 
 	def set(self, img):
 		b = img.tobytes()
-		print(b)
+		#print(b)
 		self.sock.sendto(b, (self.ip, 1235))
