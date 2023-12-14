@@ -40,5 +40,5 @@ while True:
 	# Jetzt schicken wir das neue Bild an den LED-Streifen
 	lamp.set(image)
 
-	# und warten eine hundertstel Sekunde bis zum nächsten Bild.
-	time.sleep(0.01)
+	# und warten eine zehntel Sekunde bis zum nächsten Bild.
+	time.sleep(0.1)

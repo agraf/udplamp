@@ -12,19 +12,18 @@ lamp = UdpLamp('192.168.107.10')
 # Aktuell gibt es nur pics.star als Stern.
 pics = Pictures()
 
-# "image" wird unser Bild für diesen Durchlauf. Wir fangen an mit
-# einem Bild das 250 Pixel breit und 1 Pixel hoch ist. Es beginnt
-# mit jedem Pixel als als Rot=0, Grün=0, Blau=0, also schwarz.
-image = Image.new(mode = "RGB",
-		  size = (250, 1),
-		  color = (0, 0 ,0))
-
 # Wir wollen einen Stern auf das Bild packen. Der Ort vom Stern ist
 # allerdings flexibel. In dieser Variable merken wir uns, wo der Stern
 # gerade ist.
 x = 0
 
 while True:
+	# "image" wird unser Bild für diesen Durchlauf. Wir fangen an mit
+	# einem Bild das 250 Pixel breit und 1 Pixel hoch ist. Es beginnt
+	# mit jedem Pixel als als Rot=0, Grün=0, Blau=0, also schwarz.
+	image = Image.new(mode = "RGB",
+			  size = (250, 1),
+			  color = (0, 0 ,0))
 
 	# Wir fügen einen Stern an Pixel x hinzu.
 	image.paste(pics.star, (x, 0), pics.star)
